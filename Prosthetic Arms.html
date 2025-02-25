@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOLIMB | Arm</title>
+    <link rel="stylesheet" href="./css/arm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src='/js/javascript.js' defer></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <a href="#" class="logo">BIOLIMB</a>
+        <nav class="navigation">
+            <a href="index.html" class="home">Home</a>
+            <a href="login.html">health</a>
+        </nav>
+        <!-- Shopping Cart Icon -->
+        <div id="cart-icon" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="banner-section">
+            <h2>ALL TYPES</h2>
+            <div class="banner-grid">
+                <!-- Prosthetic leg 1 -->
+                <div class="banner-item">
+                    <img src="images/images (1).jpeg" alt="Bionic Prosthetic Arm">
+                    <p>Bionic Prosthetic Arm</p>
+                    <p class="price">25000.00</p>
+                    <!-- Slider for Product 1 -->
+                    <div class="slider-container">
+                        <input type="range" class="price-slider" min="25000" max="36000" value="25000">
+                        <p>Selected Price: $<span class="selected-price">25000 </span></p>
+                    </div>
+                    <button class="add-to-cart" data-id="1" data-name="Bionic Prosthetic Arm" data-price="25000">customize & Buy </button>
+                </div>
+
+                <!-- Prosthetic leg 2 -->
+                <div class="banner-item">
+                    <img src="images/images (2).jpeg" alt="Advanced Robotic Arm">
+                    <p>Advanced Robotic Arm</p>
+                    <p class="price">$25000.00</p>
+                    <!-- Slider for Product 2 -->
+                    <div class="slider-container">
+                        <input type="range" class="price-slider" min="25000" max="36000" value="25000">
+                        <p>Selected Price: $<span class="selected-price">25000</span></p>
+                    </div>
+                    <button class="add-to-cart" data-id="2" data-name="Advanced Robotic Arm" data-price="25000">customize & Buy</button>
+                </div>
+
+                <!-- Prosthetic leg 3 -->
+                <div class="banner-item">
+                    <img src="images/download.jpeg" alt="Robotic Arm">
+                    <p>Robotic Arm</p>
+                    <p class="price">$25000.00</p>
+                    <!-- Slider for Product 3 -->
+                    <div class="slider-container">
+                        <input type="range" class="price-slider"min="25000" max="36000" value="25000">
+                        <p>Selected Price: $<span class="selected-price">25000</span></p>
+                    </div>
+                    <button class="add-to-cart" data-id="3" data-name="Robotic Arm" data-price="25000">customize & Buy</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mini Page -->
+    <div id="mini-page" class="mini-page hidden">
+        <h3>Great Choice!</h3>
+        <p>You selected: $<span id="mini-page-price">100</span></p>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal hidden">
+        <div class="cart-content">
+            <h3>Your Cart</h3>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0</span></p>
+            <button id="close-cart">Close</button>
+            <button id="clear-cart">Clear Cart</button>
+            <button id="confirm-purchase">Confirm</button>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="cards contact" id="contact">
+        <h2 class="title">Let's work together</h2>
+        <div class="content">
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="info">
+                    <h3>Phone</h3>
+                    <p>+20122222222</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info">
+                    <h3>Email</h3>
+                    <p>business@BIOLIMB.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-title">Copyrights @ <span>BIOLIMB</span></p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/business-biolomb-432807352?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/businessbiolimb?s=21"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Cart Data
+        let cart = [];
+
+        // DOM Elements
+        const cartIcon = document.getElementById('cart-icon');
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const closeCart = document.getElementById('close-cart');
+        const clearCart = document.getElementById('clear-cart');
+        const confirmPurchase = document.getElementById('confirm-purchase');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        // Slider Logic
+        const priceSliders = document.querySelectorAll('.price-slider');
+        const miniPage = document.getElementById('mini-page');
+        const miniPagePrice = document.getElementById('mini-page-price');
+
+        priceSliders.forEach(slider => {
+            const selectedPrice = slider.closest('.banner-item').querySelector('.selected-price');
+
+            slider.addEventListener('input', () => {
+                const value = slider.value;
+                selectedPrice.textContent = value;
+                miniPagePrice.textContent = value;
+
+                // Show Mini Page
+                miniPage.classList.remove('hidden');
+
+                // Hide Mini Page after 3 seconds
+                setTimeout(() => {
+                    miniPage.classList.add('hidden');
+                }, 3000);
+            });
+        });
+
+        // Open Cart Modal
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close Cart Modal
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Clear Cart
+        clearCart.addEventListener('click', () => {
+            cart = [];
+            updateCartUI();
+        });
+
+        // Confirm Purchase
+        confirmPurchase.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert('Purchase Confirmed!');
+                cart = []; // تفريغ العربة
+                updateCartUI(); // تحديث واجهة المستخدم
+            }
+        });
+
+        // Add to Cart Function
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-id');
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseFloat(button.getAttribute('data-price'));
+
+                // Check if product already exists in cart
+                const existingProduct = cart.find(item => item.id === productId);
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                }
+
+                // Update Cart UI
+                updateCartUI();
+                alert(`${productName} added to cart!`);
+            });
+        });
+
+        // Update Cart UI
+        function updateCartUI() {
+            // Update Cart Count
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+
+            // Update Cart Items
+            cartItems.innerHTML = cart.map(item => `
+                <li>
+                    ${item.name} - $${item.price} x ${item.quantity}
+                    <button class="remove-item" data-id="${item.id}">Remove</button>
+                </li>
+            `).join('');
+
+            // Update Cart Total
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            cartTotal.textContent = total.toFixed(2);
+
+            // Add Event Listeners to Remove Buttons
+            const removeButtons = document.querySelectorAll('.remove-item');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const productId = button.getAttribute('data-id');
+                    cart = cart.filter(item => item.id !== productId);
+                    updateCartUI();
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

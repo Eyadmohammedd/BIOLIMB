@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  | Health</title>
+    <link rel="stylesheet" href="css/hel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src='/js/javascript.js' defer></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <a href="#" class="logo">BIOLIMB</a>
+        <nav class="navigation">
+            <a href="index.html" class="home">Home</a>
+            <a href="#prosthetics">Our Products</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Health & Battery Section -->
+        <section class="health-section" id="health">
+            <h2>Health & Battery Status</h2>
+            <div class="health-content">
+                <!-- Battery Status -->
+                <div class="status-card">
+                    <h3>Battery Level</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="--progress-width: 75%;"></div>
+                    </div>
+                    <p>75%</p>
+                </div>
+
+                <!-- Device Health Status -->
+                <div class="status-card">
+                    <h3>Device Health</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="--progress-width: 90%;"></div>
+                    </div>
+                    <p>90%</p>
+                </div>
+
+                <!-- Control Prosthetic Strength -->
+                <div class="control-container">
+                    <h2>Control Prosthetic Strength</h2>
+                    <div class="slider-container">
+                        <label for="strength-slider">Strength Level:</label>
+                        <input type="range" id="strength-slider" min="1" max="3" value="2" step="1">
+                        <div class="slider-labels">
+                            <span>Easy</span>
+                            <span>Medium</span>
+                            <span>Hard</span>
+                        </div>
+                    </div>
+                    <p id="strength-value">Current Strength: Medium</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-title">Copyrights @ <span>BIOLIMB</span></p>
+        <div class="social-icons">
+      <a href="https://www.linkedin.com/in/business-biolomb-432807352?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+      <a href="https://x.com/businessbiolimb?s=21"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/javascript.js"></script>
+</body>
+
+</html>

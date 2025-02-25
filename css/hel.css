@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Reset and General Styles */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(../images/shutterstock_1864463521-scaled.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Header Styles */
+header {
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    text-decoration: none;
+    color: rgb(30, 210, 33);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8em;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.navigation {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navigation a {
+    color: rgb(30, 48, 210);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    color: #601cfc;
+}
+
+/* Main Content Styles */
+main {
+    padding: 100px 20px 20px; /* Adjusted padding to account for fixed header */
+}
+
+/* Health & Battery Section */
+.health-section {
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.health-section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.health-content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.status-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 1; /* إزالة الانيميشن */
+}
+
+.status-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #23c483;
+    border-radius: 10px;
+    animation: progressAnimation 1.5s ease-out forwards; /* الاحتفاظ بالانيميشن هنا */
+}
+
+.status-card p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Control Prosthetic Strength */
+.control-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.control-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    margin-bottom: 20px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #23c483;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #23c483;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+#strength-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #23c483;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #000016;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.footer-title span {
+    color: #3a6cf4;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #3a6cf4;
+    transform: translateY(-5px);
+}
+
+/* Animations */
+@keyframes progressAnimation {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--progress-width, 50%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    .navigation {
+        gap: 10px;
+    }
+
+    .navigation a {
+        font-size: 16px;
+    }
+
+    .health-section {
+        padding: 120px 20px 30px;
+    }
+
+    .control-container {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .navigation a {
+        font-size: 14px;
+    }
+
+    .health-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .status-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .control-container {
+        width: 100%;
+        max-width: 250px;
+    }
+}
